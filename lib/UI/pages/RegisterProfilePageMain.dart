@@ -65,7 +65,7 @@ class RegisterProfilePageMainState extends State<RegisterProfilePageMain> {
                         controller: inputName,
                         focusNode: focusName,
                         validator: (value){},
-                        onFieldSubmitted: (value){},
+                        onFieldSubmitted: (String value){},
                         style: openSans20Bold700.copyWith(
                             fontSize: 16, fontWeight: FontWeight.w200),
                         decoration: InputDecoration(

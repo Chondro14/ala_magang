@@ -15,7 +15,7 @@ class UserChat extends Equatable {
       this.userName,
       this.imageUser});
   @override
-  // TODO: implement props
+
   List<Object> get props =>
       [id, userName, chat, imageUser, notificationChat, dateTime];
 }

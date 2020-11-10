@@ -16,7 +16,7 @@ class Shop extends Equatable {
       this.locationShop});
 
   @override
-  // TODO: implement props
+
   List<Object> get props => [id, nameShop, foods, rate, distance, locationShop];
 }
 

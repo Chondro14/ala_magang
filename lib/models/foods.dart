@@ -30,7 +30,7 @@ class Foods extends Equatable {
       this.pictureList,
       this.rate});
   @override
-  // TODO: implement props
+
   List<Object> get props => [
         contains,
         description,

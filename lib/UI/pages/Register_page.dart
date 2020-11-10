@@ -113,7 +113,7 @@ class RegisterPageMainState extends State<RegisterPageMain> {
                                     enabledBorder: InputBorder.none),
                                 keyboardType: TextInputType.number,
                                 controller: inputPhoneNumber,
-                                validator: (value) {
+                                validator: (String value) {
                                   setState(() {
                                     if (value.isNotEmpty && value.length > 10) {
                                       isCorrect = true;
@@ -172,10 +172,10 @@ class RegisterPageMainState extends State<RegisterPageMain> {
                   height: 50,
                   child: InkWell(
                     onTap:  () {
-                      if (formKey.currentState.validate()) {
-                        if (isCorrect == true) {
-                          Get.to(VerificationPageMain(phoneNumber: phoneNumber.value+inputPhoneNumber.text,));
-                        } else {
+                      if (formKey.currentState.validate()&&isCorrect == true) {
+
+                          Get.to(VerificationPageMain(phoneNumber: phoneNumber.value+inputPhoneNumber.text,));}
+                         else {
                           Get.snackbar("", "",
                               backgroundColor: Colors.red,
                               titleText: Text(
@@ -194,7 +194,7 @@ class RegisterPageMainState extends State<RegisterPageMain> {
                               ));
                         }
                       }
-                    },
+                    ,
                     child: Padding(
                       padding: const EdgeInsets.only(top:12.0),
                       child: Container(decoration: BoxDecoration(

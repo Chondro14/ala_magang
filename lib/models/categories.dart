@@ -8,7 +8,7 @@ class Categories extends Equatable {
   Categories({this.id,this.title, this.imagePath, this.foods});
 
   @override
-  // TODO: implement props
+
   List<Object> get props => [id,title,imagePath,foods];
 }
 

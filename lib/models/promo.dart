@@ -10,7 +10,7 @@ class Promo extends Equatable{
       {this.title, this.description, this.picturePath, this.dateTime, this.id});
 
   @override
-  // TODO: implement props
+
   List<Object> get props => [id,title,description,picturePath,dateTime];
 
 }

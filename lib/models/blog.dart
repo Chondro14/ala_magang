@@ -18,7 +18,7 @@ class Blog extends Equatable {
       this.titles});
 
   @override
-  // TODO: implement props
+
   List<Object> get props => [blogStatus, titles, media, images, description];
 }
 
