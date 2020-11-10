@@ -12,3 +12,6 @@ part 'foodcard.dart';
 part 'categoriesFoodCard.dart';
 part 'shopcard.dart';
 part 'rating_bar.dart';
+part 'chatcard.dart';
+part 'customtabbar.dart';
+part 'blogcard.dart';

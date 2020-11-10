@@ -1,6 +1,6 @@
 part of 'models.dart';
 
-class Promo {
+class Promo extends Equatable{
   final int id;
   final String title;
   final String description;
@@ -8,6 +8,11 @@ class Promo {
   final DateTime dateTime;
   Promo(
       {this.title, this.description, this.picturePath, this.dateTime, this.id});
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [id,title,description,picturePath,dateTime];
+
 }
 
 List<Promo> promoListData = <Promo>[
