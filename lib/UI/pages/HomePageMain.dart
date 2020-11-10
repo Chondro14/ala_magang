@@ -9,17 +9,60 @@ class HomePageMain extends StatefulWidget {
 }
 
 class HomePageMainState extends State<HomePageMain> {
+  GlobalKey<ScaffoldState> drawer=GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      key: drawer,
+      endDrawerEnableOpenDragGesture: false,
+      drawerScrimColor: "FFB61E".toColor(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundImage: NetworkImage(
+                        "https://risetcdn.jatimtimes.com/images/2018/12/22/Jarang-Diketahui-Ini-Sepuluh-Fakta-tentang-Lisa-Blackpink150660d3a8418aa2.jpg"),
+                  ),Padding(
+                    padding: const EdgeInsets.symmetric(vertical:8.0),
+                    child: Text('Hi Lisa!',style: openSans20Bold700.copyWith(fontSize: 16),),
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center,children: [Padding(
+                    padding: const EdgeInsets.symmetric(horizontal:8.0),
+                    child: Text('Rp 5.000.000',style: openSans12Bold400,),
+                  ),Padding(
+                    padding: const EdgeInsets.symmetric(horizontal:8.0),
+                    child: Text('1.500 points',style: openSans12Bold400),
+                  )],)
+                ],
+              ),
+            ),
+            ListTile(title: Text('Profile',style: openSans12Bold400,),),
+            ListTile(title: Text('Paynment',style: openSans12Bold400,),),
+            ListTile(title: Text('Security',style: openSans12Bold400,),),
+            ListTile(title: Text('Settings',style: openSans12Bold400,),),
+            ListTile(title: Text('Helps',style: openSans12Bold400,),),
+            ListTile(title: Text('Close',style: openSans12Bold400,),onTap: (){Get.back();},),
+          ],
+        ),
+      ),
       appBar: AppBar(
+
         leading: IconButton(
-          onPressed: (){},
+          onPressed: () {
+            drawer.currentState.openDrawer();
+          },
           icon: Icon(
-            Icons.dehaze_rounded,
+            Icons.menu,
             color: "FFB61E".toColor(),
-          ),
+          )
         ),
         title: Text(
           "ALA",
@@ -30,7 +73,7 @@ class HomePageMainState extends State<HomePageMain> {
         ),
         actions: [
           IconButton(
-            onPressed: (){},
+            onPressed: () {},
             icon: Icon(
               Icons.notifications,
               color: "FFB61E".toColor(),
@@ -89,7 +132,7 @@ class HomePageMainState extends State<HomePageMain> {
                         decoration: InputDecoration(
                             hintText: "Cari",
                             suffixIcon: IconButton(
-                              onPressed: (){},
+                              onPressed: () {},
                               icon: Icon(
                                 Icons.search,
                               ),
@@ -141,7 +184,8 @@ class HomePageMainState extends State<HomePageMain> {
                               .toList(),
                         ),
                       ),
-                    ),Padding(
+                    ),
+                    Padding(
                       padding: EdgeInsets.only(left: defaultMargin, top: 12),
                       child: Text(
                         "Hot deal's",
@@ -149,51 +193,53 @@ class HomePageMainState extends State<HomePageMain> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only( top: 12),
+                      padding: EdgeInsets.only(top: 12),
                       child: SizedBox(
                           height: 175,
                           child: ListView(
                               scrollDirection: Axis.horizontal,
                               children: foodsListData
                                   .map((e) => Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal:12.0),
-                                    child: FoodCard(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12.0),
+                                        child: FoodCard(
                                           title: e.nameFoods,
                                           price: e.price,
                                           discount: e.discount,
                                           imagePath: e.pictureList,
                                           weight: e.weight,
                                         ),
-                                  ))
+                                      ))
                                   .toList())),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: defaultMargin, top: 12,bottom: 12),
+                      padding: EdgeInsets.only(
+                          left: defaultMargin, top: 12, bottom: 12),
                       child: Text(
                         "Popular Store's",
                         style: openSans20Bold700.copyWith(fontSize: 18),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only( top: 12,bottom: 12),
+                      padding: EdgeInsets.only(top: 12, bottom: 12),
                       child: SizedBox(
                           height: 200,
                           child: ListView(
                               scrollDirection: Axis.horizontal,
                               children: shopListData
                                   .map((e) => Padding(
-                                padding: const EdgeInsets.symmetric(horizontal:16.0),
-                                child: ShopCard(
-                                  nameShop: e.nameShop,
-                                  imagePath1: e.foods[0].pictureList,
-                                  imagePath2: e.foods[1].pictureList,
-                                  imagePath3: e.foods[2].pictureList,
-                                  distance: e.distance,
-                                  lengthProduct: e.foods.length,
-                                  locationShop: e.locationShop,
-
-                                ),
-                              ))
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16.0),
+                                        child: ShopCard(
+                                          nameShop: e.nameShop,
+                                          imagePath1: e.foods[0].pictureList,
+                                          imagePath2: e.foods[1].pictureList,
+                                          imagePath3: e.foods[2].pictureList,
+                                          distance: e.distance,
+                                          lengthProduct: e.foods.length,
+                                          locationShop: e.locationShop,
+                                        ),
+                                      ))
                                   .toList())),
                     ),
                   ],

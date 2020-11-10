@@ -4,7 +4,7 @@ part of'service.dart';
 
 class BlogService {
   static Future<ApiReturnValue<List<Blog>>> getBlog() async {
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(Duration(milliseconds: 700));
     return ApiReturnValue(value: blogListData);
   }
 }

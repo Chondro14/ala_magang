@@ -22,7 +22,7 @@ class Blog extends Equatable {
   List<Object> get props => [blogStatus, titles, media, images, description];
 }
 
-List<Blog> blogListData = [
+List<Blog> blogListData = <Blog>[
   Blog(
       id: 1,
       titles: "Harga Rempah-Rempah ini diperkirakan naik bulan depan",
@@ -31,7 +31,7 @@ List<Blog> blogListData = [
           "https://awsimages.detik.net.id/community/media/visual/2017/05/22/1c3afb4a-af64-48c9-9539-3dbe07d6fec7.jpg?w=700&q=90",
       blogStatus: [BlogStatus.Top],
       description:
-          "Berkhasiat Meningkatkan daya tahan tubuh ,permintaan rempah rempah semakin tinggi. \n  Harga Rempah-rempah seperti jahe,temulawak pun mulai naik di pasar."),
+          "Berkhasiat Meningkatkan daya tahan tubuh ,permintaan rempah rempah semakin tinggi.   Harga Rempah-rempah seperti jahe,temulawak pun mulai naik di pasar."),
   Blog(
     id: 2,
       titles:
@@ -60,4 +60,5 @@ List<Blog> blogListData = [
       blogStatus: [BlogStatus.Health],
       description:
       "Dinas Pertanian Provinsi Gorontalo memeriksa puluhan sapi yang akan dijual untuk hewan kurban di kompleks Pasar Dungingi Kota Gorontalo. Pemeriksaan ini untuk menjamin kesehatan hewan kurban dari berbagai penyakit, terutama antraks."),
+
 ];
