@@ -19,10 +19,10 @@ class Blog extends Equatable {
 
   @override
 
-  List<Object> get props => [blogStatus, titles, media, images, description];
+  List<Object> get props => [ titles, media, images, description];
 }
 
-List<Blog> blogListData = <Blog>[
+List<Blog> blogListData =[
   Blog(
       id: 1,
       titles: "Harga Rempah-Rempah ini diperkirakan naik bulan depan",
@@ -51,14 +51,5 @@ List<Blog> blogListData = <Blog>[
       description:
       "Sarapan di Solo ya soto Triwindu. Kuliner satu ini sudah melegenda. Pasalnya, sudah sejak 1939 sudah dijajakan dan kini dikelola oleh generasi ketiga, Muwarni"+
 "Menurut Muwarni, soto Triwindu, disebut begitu karena dulunya dijual di dekat pasar Triwindu – sebelumnya dijual secara dipikul berpindah-pindah. Soto ini merupakan kegemaran Presiden Jokowi, dan menjadi sarapan wajib bila ke Solo."),
-  Blog(
-      id: 4,
-      titles:
-      "Menjelang Idul Adha ,badan POM mulai melakukan inspeksi ke para penjual",
-      media: "kumparan.com",
-      images: "https://i.ytimg.com/vi/kfU03bcOm4s/hqdefault.jpg",
-      blogStatus: [BlogStatus.Health],
-      description:
-      "Dinas Pertanian Provinsi Gorontalo memeriksa puluhan sapi yang akan dijual untuk hewan kurban di kompleks Pasar Dungingi Kota Gorontalo. Pemeriksaan ini untuk menjamin kesehatan hewan kurban dari berbagai penyakit, terutama antraks."),
 
 ];

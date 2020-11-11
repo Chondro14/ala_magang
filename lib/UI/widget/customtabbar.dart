@@ -6,7 +6,7 @@ class CustomTabbar extends StatelessWidget {
   final List<String> titles;
   CustomTabbar(
       {@required this.onPressed,
-      @required this.selectedIndex=0,
+       this.selectedIndex=0,
       @required this.titles});
   @override
   Widget build(BuildContext context) {

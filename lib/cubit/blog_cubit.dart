@@ -8,12 +8,12 @@ part 'blog_state.dart';
 class BlogCubit extends Cubit<BlogState> {
   BlogCubit() : super(BlogInitial());
   Future<void> getBlogs()async{
-    ApiReturnValue<List<Blog>> results=await BlogService.getBlog();
-    if(results.value!=null){
-      emit(BlogLoadSucces(blog: results.value));
+    ApiReturnValue<List<Blog>> result=await BlogService.getBlog();
+    if(result.value!=null){
+      emit(BlogLoadSucces( result.value));
     }
     else{
-      emit(BlogLoadFailed(message: results.message));
+      emit(BlogLoadFailed( result.message));
     }
   }
 }

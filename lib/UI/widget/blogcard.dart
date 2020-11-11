@@ -12,22 +12,23 @@ class BlogCard extends StatelessWidget {
       height: 100,
       padding: EdgeInsets.symmetric(horizontal: 12),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            width: 50,
-            height: 50,
+            width: 75,
+            height: 75,
             decoration: BoxDecoration(
                 image: DecorationImage(image: NetworkImage(image))),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: Text(
                   title,
-                  style: openSans20Bold700,
-                  maxLines: 2,
+                  style: openSans20Bold700.copyWith(fontSize: 16),
+                  maxLines: 1,
                   overflow: TextOverflow.clip,
                 ),
               ),

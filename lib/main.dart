@@ -13,7 +13,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [BlocProvider(create: (_)=> BlogCubit()),BlocProvider(create: (_)=>FoodCubit()),BlocProvider(create: (_)=>ShopCubit())],child: GetMaterialApp(home: BottomNavPageMain(),));
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => BlogCubit()),
+          BlocProvider(create: (_) => FoodCubit()),
+          BlocProvider(create: (_) => ShopCubit())
+        ],
+        child: GetMaterialApp(
+          home: BottomNavPageMain(),
+        ));
   }
 }
-

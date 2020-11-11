@@ -16,31 +16,36 @@ class HomePageMainState extends State<HomePageMain> {
     return Scaffold(
       key: drawer,
       endDrawerEnableOpenDragGesture: false,
-      drawerScrimColor: "FFB61E".toColor(),
+      drawerScrimColor: Colors.transparent,
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+              child: Stack(
                 children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundImage: NetworkImage(
-                        "https://risetcdn.jatimtimes.com/images/2018/12/22/Jarang-Diketahui-Ini-Sepuluh-Fakta-tentang-Lisa-Blackpink150660d3a8418aa2.jpg"),
-                  ),Padding(
-                    padding: const EdgeInsets.symmetric(vertical:8.0),
-                    child: Text('Hi Lisa!',style: openSans20Bold700.copyWith(fontSize: 16),),
+                  Container(width: MediaQuery.of(context).size.width,),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundImage: NetworkImage(
+                            "https://risetcdn.jatimtimes.com/images/2018/12/22/Jarang-Diketahui-Ini-Sepuluh-Fakta-tentang-Lisa-Blackpink150660d3a8418aa2.jpg"),
+                      ),Padding(
+                        padding: const EdgeInsets.symmetric(vertical:8.0),
+                        child: Text('Hi Lisa!',style: openSans20Bold700.copyWith(fontSize: 16),),
+                      ),
+                      Row(mainAxisAlignment: MainAxisAlignment.center,children: [Padding(
+                        padding: const EdgeInsets.symmetric(horizontal:8.0),
+                        child: Text('Rp 5.000.000',style: openSans12Bold400,),
+                      ),Padding(
+                        padding: const EdgeInsets.symmetric(horizontal:8.0),
+                        child: Text('1.500 points',style: openSans12Bold400),
+                      )],)
+                    ],
                   ),
-                  Row(mainAxisAlignment: MainAxisAlignment.center,children: [Padding(
-                    padding: const EdgeInsets.symmetric(horizontal:8.0),
-                    child: Text('Rp 5.000.000',style: openSans12Bold400,),
-                  ),Padding(
-                    padding: const EdgeInsets.symmetric(horizontal:8.0),
-                    child: Text('1.500 points',style: openSans12Bold400),
-                  )],)
                 ],
               ),
             ),
