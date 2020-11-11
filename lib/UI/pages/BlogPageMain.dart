@@ -55,12 +55,15 @@ class BlogPageMainState extends State<BlogPageMain> {
         child: Column(
           children: [
             Container(
-                width: MediaQuery.of(context).size.width *0.8,
+                width: MediaQuery.of(context).size.width * 0.8,
                 height: 80,
                 padding: EdgeInsets.symmetric(vertical: 12),
                 child: TextField(
-                    decoration: InputDecoration(hintText: "Cari",
-                  suffixIcon: IconButton(icon: Icon(Icons.search),),
+                    decoration: InputDecoration(
+                  hintText: "Cari",
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.search),
+                  ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8)),
                 ))),
@@ -74,8 +77,9 @@ class BlogPageMainState extends State<BlogPageMain> {
                 titles: ["Top", "Health", "Diet", "Kids", "Culinary"]),
             Container(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height/2,
-              child: BlocBuilder<BlogCubit, BlogState>(cubit: BlogCubit(),
+              height: MediaQuery.of(context).size.height / 2,
+              child: BlocBuilder<BlogCubit, BlogState>(
+                cubit: BlogCubit(),
                 builder: (_, state) {
                   if (state is BlogLoadSucces) {
                     List<Blog> blog5 = blogListData
@@ -89,31 +93,29 @@ class BlogPageMainState extends State<BlogPageMain> {
                                         : (selectedIndex == 3)
                                             ? BlogStatus.Kids
                                             : BlogStatus.Culinery))
-
                         .toList();
                     List<Blog> blog = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Top))
+                        .where((element) => element.blogStatus
+                            .contains(element.blogStatus == BlogStatus.Top))
                         .toList();
                     List<Blog> blog1 = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Health))
+                        .where((element) => element.blogStatus
+                            .contains(element.blogStatus == BlogStatus.Health))
                         .toList();
                     List<Blog> blog2 = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Diet))
+                        .where((element) => element.blogStatus
+                            .contains(element.blogStatus == BlogStatus.Diet))
                         .toList();
                     List<Blog> blog3 = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Kids))
+                        .where((element) => element.blogStatus
+                            .contains(element.blogStatus == BlogStatus.Kids))
                         .toList();
                     List<Blog> blog4 = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Culinery))
+                        .where((element) => element.blogStatus.contains(
+                            element.blogStatus == BlogStatus.Culinery))
                         .toList();
                     return Container(
                       width: double.infinity,
-
                       child: Column(
                         children: [
                           Text(
@@ -121,33 +123,30 @@ class BlogPageMainState extends State<BlogPageMain> {
                             style: openSans20Bold700,
                           ),
                           Column(
-                            children:/* (selectedIndex==0)?blog:(selectedIndex==1)?blog1:(selectedIndex==2)?blog2:(selectedIndex==3)?blog3:blog4*/
-                            blogListData
-                                .map((e) => BlogCard(
-                                      title: e.titles,
-                                      media: e.media,
-                                      image: e.images,
-                                    ))
-                                .toList(),
+                            children: /* (selectedIndex==0)?blog:(selectedIndex==1)?blog1:(selectedIndex==2)?blog2:(selectedIndex==3)?blog3:blog4*/
+                                blog5
+                                    .map((e) => BlogCard(
+                                          title: e.titles,
+                                          media: e.media,
+                                          image: e.images,
+                                        ))
+                                    .toList(),
                           )
                         ],
                       ),
                     );
-                  }
-                  else{
-
-                     List<Blog> blog5 = blogListData
+                  } else {
+                    List<Blog> blog5 = blogListData
                         .where((element) =>
-                        element.blogStatus.contains((selectedIndex == 0)
-                            ? BlogStatus.Top
-                            : (selectedIndex == 1)
-                            ? BlogStatus.Health
-                            : (selectedIndex == 2)
-                            ? BlogStatus.Diet
-                            : (selectedIndex == 3)
-                            ? BlogStatus.Kids
-                            : BlogStatus.Culinery))
-
+                            element.blogStatus.contains((selectedIndex == 0)
+                                ? BlogStatus.Top
+                                : (selectedIndex == 1)
+                                    ? BlogStatus.Health
+                                    : (selectedIndex == 2)
+                                        ? BlogStatus.Diet
+                                        : (selectedIndex == 3)
+                                            ? BlogStatus.Kids
+                                            : BlogStatus.Culinery))
                         .toList();
                     /*List<Blog> blog = state.blog
                         .where((element) =>
@@ -173,24 +172,25 @@ class BlogPageMainState extends State<BlogPageMain> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left:12.0,top:12),
+                          padding: const EdgeInsets.only(left: 12.0, top: 12),
                           child: Text(
                             "Top",
                             style: openSans20Bold700,
                           ),
                         ),
                         Column(
-                          children:/* (selectedIndex==0)?blog:(selectedIndex==1)?blog1:(selectedIndex==2)?blog2:(selectedIndex==3)?blog3:blog4*/
-                          blogListData
-                              .map((e) => BlogCard(
-                            title: e.titles,
-                            media: e.media,
-                            image: e.images,
-                          ))
-                              .toList(),
+                          children: /* (selectedIndex==0)?blog:(selectedIndex==1)?blog1:(selectedIndex==2)?blog2:(selectedIndex==3)?blog3:blog4*/
+                              blogListData
+                                  .map((e) => BlogCard(
+                                        title: e.titles,
+                                        media: e.media,
+                                        image: e.images,
+                                      ))
+                                  .toList(),
                         )
                       ],
-                    );}
+                    );
+                  }
                 },
               ),
             )

@@ -1,6 +1,7 @@
 
 import 'package:ala_magang/UI/widget/widgets.dart';
 import 'package:ala_magang/cubit/blog_cubit.dart';
+import 'package:ala_magang/cubit/cubit.dart';
 import 'package:ala_magang/models/models.dart';
 import 'package:ala_magang/shared/shared.dart';
 import 'package:flutter/cupertino.dart';

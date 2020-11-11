@@ -1,6 +1,7 @@
 import 'package:ala_magang/UI/pages/pages.dart';
 import 'package:ala_magang/cubit/blog_cubit.dart';
 import 'package:ala_magang/cubit/cubit.dart';
+import 'package:ala_magang/cubit/promo_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/root_widget.dart';
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (_) => BlogCubit()),
           BlocProvider(create: (_) => FoodCubit()),
-          BlocProvider(create: (_) => ShopCubit())
+          BlocProvider(create: (_) => ShopCubit()),
+          BlocProvider(create: (_)=> PromoCubit(),child: HomePageMain(),)
         ],
         child: GetMaterialApp(
           home: BottomNavPageMain(),

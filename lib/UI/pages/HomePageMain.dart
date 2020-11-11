@@ -157,13 +157,19 @@ class HomePageMainState extends State<HomePageMain> {
                     SizedBox(height: 8),
                     SizedBox(
                         height: MediaQuery.of(context).size.height * 0.1,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: promoListData
-                              .map((e) => PromoCard(
+                          child: BlocBuilder<PromoCubit,PromoState>(builder: (_,state)=>(state is PromoLoaded)?
+                             ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: state.promo
+                                  .map((e) => PromoCard(
                                   title: e.title, imagePath: e.picturePath))
-                              .toList(),
-                        )),
+                                  .toList(),
+                            )
+                          :
+
+                            Center(child: SpinKitSpinningCircle(color:"FFB61E".toColor() ,),)
+                          ,cubit: PromoCubit(),),
+                        ),
                     Padding(
                       padding: EdgeInsets.only(left: defaultMargin, top: 12),
                       child: Text(

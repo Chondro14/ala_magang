@@ -15,7 +15,7 @@ class Promo extends Equatable{
 
 }
 
-List<Promo> promoListData = <Promo>[
+List<Promo> promoListData = [
   Promo(
       id: 1,
       title: "Festival Sayur discount 50%",
