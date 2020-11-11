@@ -167,7 +167,7 @@ class HomePageMainState extends State<HomePageMain> {
                             )
                           :
 
-                            Center(child: SpinKitSpinningCircle(color:"FFB61E".toColor() ,),)
+                            Center(child:Text(state.toString()),)
                           ,cubit: PromoCubit(),),
                         ),
                     Padding(

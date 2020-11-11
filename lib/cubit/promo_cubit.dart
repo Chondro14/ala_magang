@@ -11,6 +11,7 @@ class PromoCubit extends Cubit<PromoState> {
   Future<void> getPromoState()async{
     ApiReturnValue<List<Promo>> results=await PromoService.getPromos();
     print(results.value.toString());
+
     if(results.value!=null){
       emit(PromoLoaded(results.value));
     }

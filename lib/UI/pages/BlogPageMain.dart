@@ -96,23 +96,23 @@ class BlogPageMainState extends State<BlogPageMain> {
                         .toList();
                     List<Blog> blog = state.blog
                         .where((element) => element.blogStatus
-                            .contains(element.blogStatus == BlogStatus.Top))
+                            .contains( BlogStatus.Top))
                         .toList();
                     List<Blog> blog1 = state.blog
                         .where((element) => element.blogStatus
-                            .contains(element.blogStatus == BlogStatus.Health))
+                            .contains( BlogStatus.Health))
                         .toList();
                     List<Blog> blog2 = state.blog
                         .where((element) => element.blogStatus
-                            .contains(element.blogStatus == BlogStatus.Diet))
+                            .contains( BlogStatus.Diet))
                         .toList();
                     List<Blog> blog3 = state.blog
                         .where((element) => element.blogStatus
-                            .contains(element.blogStatus == BlogStatus.Kids))
+                            .contains( BlogStatus.Kids))
                         .toList();
                     List<Blog> blog4 = state.blog
                         .where((element) => element.blogStatus.contains(
-                            element.blogStatus == BlogStatus.Culinery))
+                             BlogStatus.Culinery))
                         .toList();
                     return Container(
                       width: double.infinity,
@@ -136,60 +136,7 @@ class BlogPageMainState extends State<BlogPageMain> {
                       ),
                     );
                   } else {
-                    List<Blog> blog5 = blogListData
-                        .where((element) =>
-                            element.blogStatus.contains((selectedIndex == 0)
-                                ? BlogStatus.Top
-                                : (selectedIndex == 1)
-                                    ? BlogStatus.Health
-                                    : (selectedIndex == 2)
-                                        ? BlogStatus.Diet
-                                        : (selectedIndex == 3)
-                                            ? BlogStatus.Kids
-                                            : BlogStatus.Culinery))
-                        .toList();
-                    /*List<Blog> blog = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Top))
-                        .toList();
-                    List<Blog> blog1 = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Health))
-                        .toList();
-                    List<Blog> blog2 = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Diet))
-                        .toList();
-                    List<Blog> blog3 = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Kids))
-                        .toList();
-                    List<Blog> blog4 = state.blog
-                        .where((element) =>
-                        element.blogStatus.contains(element.blogStatus == BlogStatus.Culinery))
-                        .toList();*/
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12.0, top: 12),
-                          child: Text(
-                            "Top",
-                            style: openSans20Bold700,
-                          ),
-                        ),
-                        Column(
-                          children: /* (selectedIndex==0)?blog:(selectedIndex==1)?blog1:(selectedIndex==2)?blog2:(selectedIndex==3)?blog3:blog4*/
-                              blogListData
-                                  .map((e) => BlogCard(
-                                        title: e.titles,
-                                        media: e.media,
-                                        image: e.images,
-                                      ))
-                                  .toList(),
-                        )
-                      ],
-                    );
+                    return Text(state.toString());
                   }
                 },
               ),

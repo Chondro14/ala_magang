@@ -8,7 +8,6 @@ part of 'promo_cubit.dart';
 }
 
 class PromoInitial extends PromoState {
-
 }
 class PromoLoaded extends PromoState{
   final List<Promo> promo;
