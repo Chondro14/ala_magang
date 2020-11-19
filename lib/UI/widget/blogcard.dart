@@ -21,14 +21,15 @@ class BlogCard extends StatelessWidget {
                 image: DecorationImage(image: NetworkImage(image))),
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width / 2,
                 child: Text(
                   title,
-                  style: openSans20Bold700.copyWith(fontSize: 16),
-                  maxLines: 1,
+                  style: openSans20Bold700.copyWith(fontSize: 14),
+                  maxLines: 2,
                   overflow: TextOverflow.clip,
                 ),
               ),

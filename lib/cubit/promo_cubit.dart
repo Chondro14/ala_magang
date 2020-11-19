@@ -13,10 +13,11 @@ class PromoCubit extends Cubit<PromoState> {
     print(results.value.toString());
 
     if(results.value!=null){
-      emit(PromoLoaded(results.value));
+      await Future.delayed(Duration(milliseconds: 800));
+     return emit(PromoLoaded(results.value));
     }
     else{
-      emit(PromoLoadingFailed(results.message));
+     return emit(PromoLoadingFailed(results.message));
       print(results.value);
     }
   }

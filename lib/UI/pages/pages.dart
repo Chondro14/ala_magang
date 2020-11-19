@@ -10,9 +10,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:supercharged/supercharged.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 
 part 'GeneralPageMain.dart';
 part 'Register_page.dart';
@@ -23,3 +24,5 @@ part 'HomePageMain.dart';
 part 'FeedPageMain.dart';
 part 'ChatPageMain.dart';
 part 'BlogPageMain.dart';
+part 'DetailFoodPageMain.dart';
+part 'DetailCategoriesPageMain.dart';

@@ -16,6 +16,7 @@ class Foods extends Equatable {
   final double rate;
   final String pictureList;
 
+
   Foods(
       {this.contains,
       this.description,

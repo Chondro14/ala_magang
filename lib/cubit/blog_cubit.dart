@@ -10,10 +10,10 @@ class BlogCubit extends Cubit<BlogState> {
   Future<void> getBlogs()async{
     ApiReturnValue<List<Blog>> result=await BlogService.getBlog();
     if(result.value!=null){
-      emit(BlogLoadSucces( result.value));
+      return emit(BlogLoadSucces( result.value));
     }
     else{
-      emit(BlogLoadFailed( result.message));
+      return emit(BlogLoadFailed( result.message));
     }
   }
 }

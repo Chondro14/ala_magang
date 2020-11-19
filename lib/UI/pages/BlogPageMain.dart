@@ -9,6 +9,7 @@ class BlogPageMain extends StatefulWidget {
 
 class BlogPageMainState extends State<BlogPageMain> {
   int selectedIndex = 0;
+  List<String> titles=["Top", "Health", "Diet", "Kids", "Culinary"];
   /*List<Blog> blog = blogListData
       .where((element) =>
       element.blogStatus.contains(element.blogStatus == BlogStatus.Top))
@@ -74,15 +75,15 @@ class BlogPageMainState extends State<BlogPageMain> {
                   });
                 },
                 selectedIndex: selectedIndex,
-                titles: ["Top", "Health", "Diet", "Kids", "Culinary"]),
+                titles: titles),
             Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height / 2,
               child: BlocBuilder<BlogCubit, BlogState>(
-                cubit: BlogCubit(),
                 builder: (_, state) {
+                  BlocProvider.of<BlogCubit>(context).getBlogs();
                   if (state is BlogLoadSucces) {
-                    List<Blog> blog5 = blogListData
+                    List<Blog> blog5 = state.blog
                         .where((element) =>
                             element.blogStatus.contains((selectedIndex == 0)
                                 ? BlogStatus.Top
@@ -117,10 +118,15 @@ class BlogPageMainState extends State<BlogPageMain> {
                     return Container(
                       width: double.infinity,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "Top",
-                            style: openSans20Bold700,
+                          Padding(
+                            padding: const EdgeInsets.only(top:16.0,left:16.0),
+                            child: Text(
+                              (selectedIndex==0)?titles[0]:(selectedIndex==1)?titles[1]:(selectedIndex==2)?titles[2]:(selectedIndex==3)?titles[3]:titles[4],
+                              style: openSans20Bold700,
+                            ),
                           ),
                           Column(
                             children: /* (selectedIndex==0)?blog:(selectedIndex==1)?blog1:(selectedIndex==2)?blog2:(selectedIndex==3)?blog3:blog4*/
@@ -136,7 +142,7 @@ class BlogPageMainState extends State<BlogPageMain> {
                       ),
                     );
                   } else {
-                    return Text(state.toString());
+                    return Center(child: SpinKitChasingDots(color: "FFB61E".toColor(),),);
                   }
                 },
               ),

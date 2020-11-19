@@ -10,6 +10,14 @@ class HomePageMain extends StatefulWidget {
 
 class HomePageMainState extends State<HomePageMain> {
   GlobalKey<ScaffoldState> drawer=GlobalKey<ScaffoldState>();
+  var cubitPromo=PromoCubit();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    cubitPromo.getPromoState();
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -155,21 +163,26 @@ class HomePageMainState extends State<HomePageMain> {
                           style: openSans20Bold700.copyWith(fontSize: 18)),
                     ),
                     SizedBox(height: 8),
-                    SizedBox(
+                    Container(
                         height: MediaQuery.of(context).size.height * 0.1,
-                          child: BlocBuilder<PromoCubit,PromoState>(builder: (_,state)=>(state is PromoLoaded)?
-                             ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: state.promo
-                                  .map((e) => PromoCard(
-                                  title: e.title, imagePath: e.picturePath))
-                                  .toList(),
-                            )
-                          :
+                          child: BlocBuilder<PromoCubit,PromoState>(builder: (_,state){
 
-                            Center(child:Text(state.toString()),)
-                          ,cubit: PromoCubit(),),
-                        ),
+                            BlocProvider.of<PromoCubit>(context).getPromoState();
+                            if(state is PromoLoaded){
+
+                              return ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: state.promo
+                                    .map((e) => PromoCard(
+                                    title: e.title, imagePath: e.picturePath))
+                                    .toList(),
+                              );
+                            }
+
+                              else{return Center(child:SpinKitChasingDots(color: "FFB61E".toColor(),));}
+                          })
+                          ),
+
                     Padding(
                       padding: EdgeInsets.only(left: defaultMargin, top: 12),
                       child: Text(
@@ -213,12 +226,15 @@ class HomePageMainState extends State<HomePageMain> {
                                   .map((e) => Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 12.0),
-                                        child: FoodCard(
-                                          title: e.nameFoods,
-                                          price: e.price,
-                                          discount: e.discount,
-                                          imagePath: e.pictureList,
-                                          weight: e.weight,
+                                        child: InkWell(
+                                          onTap: (){Get.to(DetailFoodPageMain(foods: e,));},
+                                          child: FoodCard(
+                                            title: e.nameFoods,
+                                            price: e.price,
+                                            discount: e.discount,
+                                            imagePath: e.pictureList,
+                                            weight: e.weight,
+                                          ),
                                         ),
                                       ))
                                   .toList())),
