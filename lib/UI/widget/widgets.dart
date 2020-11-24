@@ -17,3 +17,4 @@ part 'chatcard.dart';
 part 'customtabbar.dart';
 part 'blogcard.dart';
 part 'feedcard.dart';
+part 'FoodCardAdd.dart';

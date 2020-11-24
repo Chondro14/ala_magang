@@ -15,6 +15,7 @@ class Foods extends Equatable {
   final List<CategoryFoods> typeFoods;
   final double rate;
   final String pictureList;
+  final bool freeongkir;
 
 
   Foods(
@@ -29,7 +30,7 @@ class Foods extends Equatable {
       this.weight,
       this.typeFoods,
       this.pictureList,
-      this.rate});
+      this.rate,this.freeongkir});
   @override
 
   List<Object> get props => [
@@ -44,7 +45,7 @@ class Foods extends Equatable {
         quantity,
         weight,
         typeFoods,
-        rate
+        rate,freeongkir
       ];
 }
 
@@ -59,7 +60,7 @@ List<Foods> foodsListData = [
       quantity: 1,
       rate: 4.5,
     pictureList: "https://tap-assets-prod.dexecure.net/wp-content/uploads/sites/24/2019/02/manfaat-bawang-putih-5.jpg",
-    weight: 250,typeFoods: [CategoryFoods.Seasoning,CategoryFoods.Vegetable],price: 7000
+    weight: 250,typeFoods: [CategoryFoods.Seasoning,CategoryFoods.Vegetable],price: 7000,contains: ['Kandungan gizi : Nilai gizi per 100 gram','Energi : 72 kkal','Air : 79,80 gram','Karbohidrat : 16,80 gram','Gula Total : 7,87 gram','Serat total : 3,2 gram','Protein : 2,5 gram','Lemak Total : 0,1 gram'],freeongkir: false
 
   ),
   Foods(
@@ -72,7 +73,7 @@ List<Foods> foodsListData = [
       quantity: 1,
       rate: 5.0,
       pictureList: "https://ecs7.tokopedia.net/img/cache/700/product-1/2019/1/10/5191956/5191956_ce13ac48-4408-4ab4-8f0f-ff4e9bef5ef3_700_700.jpg",
-      weight: 250,typeFoods: [CategoryFoods.Meats],price: 4000000
+      weight: 250,typeFoods: [CategoryFoods.Meats],price: 4000000,contains: [],freeongkir: false
 
   ),
   Foods(
@@ -85,7 +86,7 @@ List<Foods> foodsListData = [
       quantity: 1,
       rate: 5.0,
       pictureList: "https://ayamkita.com/wp-content/uploads/2017/06/Pengertian-Karkas-Ayam.jpg",
-      weight: 250,typeFoods: [CategoryFoods.Meats],price: 10000
+      weight: 250,typeFoods: [CategoryFoods.Meats],price: 10000,contains: [],freeongkir: false
 
   ),
   Foods(
@@ -98,7 +99,7 @@ List<Foods> foodsListData = [
       quantity: 1,
       rate: 5.0,
       pictureList: "https://ayamkita.com/wp-content/uploads/2017/06/Pengertian-Karkas-Ayam.jpg",
-      weight: 250,typeFoods: [CategoryFoods.Vegetable],price: 4000
+      weight: 250,typeFoods: [CategoryFoods.Vegetable],price: 4000,contains: [],freeongkir: true
 
   ),
   Foods(
@@ -111,7 +112,7 @@ List<Foods> foodsListData = [
       quantity: 1,
       rate: 5.0,
       pictureList: "https://ecs7.tokopedia.net/img/cache/700/VqbcmM/2020/7/18/18c51724-37ae-4328-9698-978d28ba2aa3.jpg",
-      weight: 250,typeFoods: [CategoryFoods.Vegetable],price: 11000
+      weight: 250,typeFoods: [CategoryFoods.Vegetable],price: 11000,contains: [],freeongkir: true
 
   )
 ];

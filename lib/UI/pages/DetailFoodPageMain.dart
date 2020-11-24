@@ -18,6 +18,16 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       extendBodyBehindAppBar: true,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: "FFB61E".toColor(),
+        icon: Icon(
+          Icons.add_shopping_cart_outlined,
+          color: Colors.white,
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32)),
+        label: Text('Masukkan ke keranjang', style: openSans12Bold400),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
@@ -52,11 +62,15 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                       image: NetworkImage(widget.foods.pictureList),
                       fit: BoxFit.fill)),
             ),
-            Container(padding: EdgeInsets.symmetric(horizontal:24,vertical:12),decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 1.2,color: Colors.black26))),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              decoration: BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(width: 1.2, color: Colors.black26))),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top:12.0),
+                    padding: const EdgeInsets.only(top: 12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -68,7 +82,7 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top:12.0),
+                    padding: const EdgeInsets.only(top: 12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -100,23 +114,28 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top:12.0),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                    padding: const EdgeInsets.only(top: 12.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
-                          width:100,
+                            width: 100,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(32)),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                CircleAvatar(radius:15,
-                                  backgroundColor: "FFB61E".toColor(),
-                                  child: Icon(Icons.remove, color: Colors.white),
-                                ),
-                                Text(widget.foods.quantity.toString(),style:openSans12Bold400.copyWith(fontSize: 14)),
                                 CircleAvatar(
-                                  radius:15,
+                                  radius: 15,
+                                  backgroundColor: "FFB61E".toColor(),
+                                  child:
+                                      Icon(Icons.remove, color: Colors.white),
+                                ),
+                                Text(widget.foods.quantity.toString(),
+                                    style: openSans12Bold400.copyWith(
+                                        fontSize: 14)),
+                                CircleAvatar(
+                                  radius: 15,
                                   backgroundColor: "FFB61E".toColor(),
                                   child: Icon(Icons.add, color: Colors.white),
                                 )
@@ -127,11 +146,91 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                   )
                 ],
               ),
-            ),Container(child: Column(children: [CustomTabbar(titles: ["Dekripsi","Kandungan","Fun Fact"],selectedIndex: selectedIndex,onPressed: (index){
-              setState(() {
-                selectedIndex=index;
-              });
-            },)],),)
+            ),
+            Container(
+              child: Column(
+                children: [
+                  CustomTabbar(
+                    titles: ["Dekripsi", "Kandungan", "Fun Fact"],
+                    selectedIndex: selectedIndex,
+                    onPressed: (index) {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                  ),
+                  (selectedIndex == 0)
+                      ? Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 12),
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(
+                                      width: 1.2, color: Colors.black26))),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Diskripsi',
+                                style: openSans20Bold700.copyWith(fontSize: 15),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8.0),
+                                child: Text(widget.foods.description,
+                                    style: openSans12Bold400),
+                              )
+                            ],
+                          ),
+                        )
+                      : (selectedIndex == 1)
+                          ? Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 24, vertical: 12),
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          width: 1.2, color: Colors.black26))),
+                              child: Column(
+                                children: [
+                                  Text('Kandungan',
+                                      style: openSans20Bold700.copyWith(
+                                          fontSize: 15)),
+                                  SizedBox(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: MediaQuery.of(context).size.height *
+                                        0.1,
+                                    child: ListView.builder(
+                                      itemCount: widget.foods.contains.length,
+                                      itemBuilder: (_, index) {
+                                        return Text(
+                                            widget.foods.contains[index]);
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ))
+                          : Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 24, vertical: 12),
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          width: 1.2, color: Colors.black26))),
+                            )
+                ],
+              ),
+            ),
+            Container(
+                height: MediaQuery.of(context).size.height * 0.2,
+                child: BlocBuilder<FoodCubit, FoodState>(
+                  builder: (_, state) {
+                    BlocProvider.of<FoodCubit>(context).getFoods();
+                    if(state is FoodLoadSucces){
+                      return ListView(children: state.foods.map((e) => FoodCard()).toList());
+                    }
+                  },
+                ))
           ],
         ),
       ),
