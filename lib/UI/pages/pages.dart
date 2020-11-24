@@ -26,3 +26,4 @@ part 'ChatPageMain.dart';
 part 'BlogPageMain.dart';
 part 'DetailFoodPageMain.dart';
 part 'DetailCategoriesPageMain.dart';
+part 'DetailMenuFoodPageMain.dart';

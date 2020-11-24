@@ -13,6 +13,16 @@ class DetailFoodPageMain extends StatefulWidget {
 class DetailFoodPageMainState extends State<DetailFoodPageMain> {
   int selectedIndex = 0;
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+  }
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
@@ -196,18 +206,21 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                                   Text('Kandungan',
                                       style: openSans20Bold700.copyWith(
                                           fontSize: 15)),
-                                  SizedBox(
+                                  Column(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,children: List.generate(widget.foods.contains.length, (index) => Text(widget.foods.contains[index])),)
+                                  /*SizedBox(
                                     width: MediaQuery.of(context).size.width,
                                     height: MediaQuery.of(context).size.height *
                                         0.1,
-                                    child: ListView.builder(
+                                    child: ListP
+
+                                    ListView.builder(
                                       itemCount: widget.foods.contains.length,
                                       itemBuilder: (_, index) {
                                         return Text(
                                             widget.foods.contains[index]);
                                       },
                                     ),
-                                  )
+                                  )*/
                                 ],
                               ))
                           : Container(
@@ -221,16 +234,31 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                 ],
               ),
             ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              child: SizedBox(child: Text('Saran yang terkait',style:openSans20Bold700.copyWith(fontSize:16)),),
+            ),
             Container(
-                height: MediaQuery.of(context).size.height * 0.2,
+                height: MediaQuery.of(context).size.height * 0.3,
                 child: BlocBuilder<FoodCubit, FoodState>(
                   builder: (_, state) {
                     BlocProvider.of<FoodCubit>(context).getFoods();
                     if(state is FoodLoadSucces){
-                      return ListView(children: state.foods.map((e) => FoodCard()).toList());
+                      return ListView(scrollDirection: Axis.horizontal,children: state.foods.map((e) => FoodCardAdd(imagePath: e.pictureList,shop: e.nameShop,title: e.nameFoods,price: e.price,weight:e.weight,onPressed: (){Get.to(DetailFoodPageMain(foods:e));},)).toList());
                     }
                   },
-                ))
+                )),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              child: SizedBox(child: Text('Bahan Masakan untuk',style:openSans20Bold700.copyWith(fontSize:16)),),
+            ),
+            Container(
+                height: MediaQuery.of(context).size.height * 0.3,
+                child:
+
+                       ListView(scrollDirection: Axis.horizontal,children: List.generate(widget.foods.menuCook.length, (index) => MenuCookCard(title: widget.foods.menuCook[index].titleCook,imagePath: widget.foods.menuCook[index].imagesCook,onPressed: (){Get.to(DetailMenuFoodPageMain(cookFood:widget.foods.menuCook[index] ,));},)),)
+                    ),
+            SizedBox(height: 60,)
           ],
         ),
       ),
