@@ -19,3 +19,6 @@ part 'blogcard.dart';
 part 'feedcard.dart';
 part 'FoodCardAdd.dart';
 part 'menucookcard.dart';
+part 'foodshopcard.dart';
+part 'reviewscard.dart';
+part 'foodcart.dart';

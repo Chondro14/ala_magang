@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (_)=> PromoCubit(),child: HomePageMain(),)
         ],
         child: GetMaterialApp(
-          home: BottomNavPageMain(),
+          home: CartPageMain(),
         ));
   }
 }

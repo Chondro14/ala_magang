@@ -7,13 +7,16 @@ class Shop extends Equatable {
   final double rate;
   final double distance;
   final String locationShop;
+  final String images;
+  final List<ReviewClass> reviewClass;
   Shop(
       {this.rate,
+        this.reviewClass,
       this.nameShop,
       this.id,
       this.distance,
       this.foods,
-      this.locationShop});
+      this.locationShop,this.images});
 
   @override
 
@@ -23,7 +26,9 @@ class Shop extends Equatable {
 List<Shop> shopListData = [
   Shop(
       id: 1,
+      reviewClass: userReviews,
       nameShop: "Makishitoo ",
+      images: "https://cdn-2.tstatic.net/bangka/foto/bank/images/pedagang-sayur-keliling.jpg",
       foods: [Foods(
           id: 1,
           nameFoods: "Bawang Merah",
@@ -40,6 +45,7 @@ List<Shop> shopListData = [
         Foods(
             id: 2,
             nameFoods: "Daging Sapi Wagyu",
+
             nameShop: "Kimishita shop",
             description:
             "Danging Sapi Wagyu ialah daging super premium  \n rasa yang udah awalnya sudah enak apalagi dengan pengolahan yang terbaik",
@@ -94,7 +100,8 @@ List<Shop> shopListData = [
       locationShop: "Jln Rembuksari no 10"),
   Shop(
       id: 2,
-      nameShop: "Sumiati shop ",
+      reviewClass: userReviews,
+      nameShop: "Sumiati shop ",images: "https://ecs7.tokopedia.net/img/cache/700/product-1/2017/10/27/23949793/23949793_2a608f58-cde0-4b7b-b08a-e08694754815_550_400.jpg",
       foods: [Foods(
           id: 1,
           nameFoods: "Bawang Merah",
@@ -165,7 +172,9 @@ List<Shop> shopListData = [
       locationShop: "Jln Ikan tombro no 02"),
   Shop(
       id: 3,
+      images: "https://i.mentorbizlist.com/img/biznes/066/ideya-dlya-malogo-biznesa-ovoshnaya-lavka-ili-magazin-2.jpg",
       nameShop: "Kampung sayur",
+      reviewClass: userReviews,
       rate: 4.7,
       distance: 1.56,
       locationShop: "Jln Oro-oro dowo no 1",foods: [Foods(

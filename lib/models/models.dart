@@ -9,3 +9,4 @@ part 'transactions.dart';
 part 'order.dart';
 part 'blog.dart';
 part 'apireturnvalue.dart';
+part 'reviews.dart';

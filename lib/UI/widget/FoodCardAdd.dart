@@ -25,7 +25,6 @@ class FoodCardAdd extends StatelessWidget {
       child: InkWell(
         onTap: onPressed,
         child: Container(
-
           width: MediaQuery.of(context).size.width * 0.48,
           height: MediaQuery.of(context).size.height * 0.4,
           decoration: BoxDecoration(
@@ -46,7 +45,8 @@ class FoodCardAdd extends StatelessWidget {
                 height: 90,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(4), topRight: Radius.circular(4)),
+                      topLeft: Radius.circular(4),
+                      topRight: Radius.circular(4)),
                   image: DecorationImage(
                       image: NetworkImage(imagePath), fit: BoxFit.cover),
                 ),
@@ -74,19 +74,49 @@ class FoodCardAdd extends StatelessWidget {
                         )
                       ])),
               Padding(
-                padding: const EdgeInsets.only(left:8.0),
-                child: SizedBox(width: 100,child: Text(title,style:openSans12Bold400.copyWith(fontSize: 13,fontWeight: FontWeight.w800,),overflow: TextOverflow.ellipsis,maxLines: 1,)),
+                padding: const EdgeInsets.only(left: 8.0),
+                child: SizedBox(
+                    width: 100,
+                    child: Text(
+                      title,
+                      style: openSans12Bold400.copyWith(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w800,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    )),
               ),
               Padding(
-                padding: const EdgeInsets.only(left:8.0),
-                child: Text(NumberFormat.currency(
-                    locale: 'id-ID', symbol: "Rp", decimalDigits: 0)
-                    .format(price) +
-                    "/" +
-                    weight.toString() +
-                    " gram",style: openSans12Bold400.copyWith(fontSize:10),),
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(
+                  NumberFormat.currency(
+                              locale: 'id-ID', symbol: "Rp", decimalDigits: 0)
+                          .format(price) +
+                      "/" +
+                      weight.toString() +
+                      " gram",
+                  style: openSans12Bold400.copyWith(fontSize: 10),
+                ),
               ),
-              Container(padding:const EdgeInsets.only(right:8.0),width:  MediaQuery.of(context).size.width * 0.48,child:Row(mainAxisAlignment: MainAxisAlignment.end,children: [InkWell(onTap: addCart,child: CircleAvatar(child: Icon(Icons.add_shopping_cart_rounded,size: 20,color: Colors.black,),backgroundColor: "FFB61E".toColor(),))],))
+              Container(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  width: MediaQuery.of(context).size.width * 0.48,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                          onTap: addCart,
+                          child: CircleAvatar(
+                            child: Icon(
+                              Icons.add_shopping_cart_rounded,
+                              size: 20,
+                              color: Colors.black,
+                            ),
+                            backgroundColor: "FFB61E".toColor(),
+                          ))
+                    ],
+                  ))
             ],
           ),
         ),

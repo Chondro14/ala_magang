@@ -66,7 +66,7 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
         child: ListView(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: MediaQuery.of(context).size.height * 0.4,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: NetworkImage(widget.foods.pictureList),
@@ -104,7 +104,7 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                             ),
                             Text(
                               widget.foods.nameShop,
-                              style: openSans20Bold700.copyWith(fontSize: 13),
+                              style: openSans20Bold700.copyWith(fontSize: 15),
                             )
                           ],
                         ),
@@ -118,7 +118,7 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                               "/" +
                               widget.foods.weight.toString() +
                               "gram",
-                          style: openSans20Bold700.copyWith(fontSize: 13),
+                          style: openSans20Bold700.copyWith(fontSize: 15),
                         )
                       ],
                     ),
@@ -143,7 +143,7 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                                 ),
                                 Text(widget.foods.quantity.toString(),
                                     style: openSans12Bold400.copyWith(
-                                        fontSize: 14)),
+                                        fontSize: 16)),
                                 CircleAvatar(
                                   radius: 15,
                                   backgroundColor: "FFB61E".toColor(),
@@ -183,7 +183,7 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                             children: [
                               Text(
                                 'Diskripsi',
-                                style: openSans20Bold700.copyWith(fontSize: 15),
+                                style: openSans20Bold700.copyWith(fontSize: 16),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 8.0),
@@ -205,7 +205,7 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
                                 children: [
                                   Text('Kandungan',
                                       style: openSans20Bold700.copyWith(
-                                          fontSize: 15)),
+                                          fontSize: 16)),
                                   Column(mainAxisAlignment: MainAxisAlignment.start,crossAxisAlignment: CrossAxisAlignment.start,children: List.generate(widget.foods.contains.length, (index) => Text(widget.foods.contains[index])),)
                                   /*SizedBox(
                                     width: MediaQuery.of(context).size.width,
@@ -239,7 +239,7 @@ class DetailFoodPageMainState extends State<DetailFoodPageMain> {
               child: SizedBox(child: Text('Saran yang terkait',style:openSans20Bold700.copyWith(fontSize:16)),),
             ),
             Container(
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: MediaQuery.of(context).size.height * 0.4,
                 child: BlocBuilder<FoodCubit, FoodState>(
                   builder: (_, state) {
                     BlocProvider.of<FoodCubit>(context).getFoods();

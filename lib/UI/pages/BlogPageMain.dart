@@ -78,7 +78,7 @@ class BlogPageMainState extends State<BlogPageMain> {
                 titles: titles),
             Container(
               width: double.infinity,
-              height: MediaQuery.of(context).size.height / 2,
+
               child: BlocBuilder<BlogCubit, BlogState>(
                 builder: (_, state) {
                   BlocProvider.of<BlogCubit>(context).getBlogs();

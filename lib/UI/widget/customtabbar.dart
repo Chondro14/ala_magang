@@ -36,11 +36,11 @@ class CustomTabbar extends StatelessWidget {
                               child: Text(e,
                                   style: (titles.indexOf(e) == selectedIndex)
                                       ? openSans20Bold700.copyWith(
-                                          fontSize: 14,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                         )
                                       : openSans20Bold700.copyWith(
-                                          fontSize: 14,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.w400,
                                         )),
                             ),

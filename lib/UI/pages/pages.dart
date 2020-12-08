@@ -27,3 +27,5 @@ part 'BlogPageMain.dart';
 part 'DetailFoodPageMain.dart';
 part 'DetailCategoriesPageMain.dart';
 part 'DetailMenuFoodPageMain.dart';
+part 'DetailShopPageMain.dart';
+part 'CartPageMain.dart';

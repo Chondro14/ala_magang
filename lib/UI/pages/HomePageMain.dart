@@ -194,19 +194,19 @@ class HomePageMainState extends State<HomePageMain> {
                       padding: EdgeInsets.only(left: defaultMargin, top: 12),
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height * 0.1,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: categoriesListData
-                              .map((e) => Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0),
-                                    child: CategoriesFoodCard(
-                                      title: e.title,
-                                      imagePath: e.imagePath,
-                                    ),
-                                  ))
-                              .toList(),
-                        ),
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: categoriesListData
+                                  .map((e) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12.0),
+                                        child: CategoriesFoodCard(
+                                          title: e.title,
+                                          imagePath: e.imagePath,
+                                        ),
+                                    ))
+                                .toList(),
+                          ),
                       ),
                     ),
                     Padding(
@@ -218,26 +218,32 @@ class HomePageMainState extends State<HomePageMain> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 12),
-                      child: SizedBox(
+                      child: Container(
                           height: 175,
-                          child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: foodsListData
-                                  .map((e) => Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12.0),
-                                        child: InkWell(
-                                          onTap: (){Get.to(DetailFoodPageMain(foods: e,));},
-                                          child: FoodCard(
-                                            title: e.nameFoods,
-                                            price: e.price,
-                                            discount: e.discount,
-                                            imagePath: e.pictureList,
-                                            weight: e.weight,
-                                          ),
-                                        ),
-                                      ))
-                                  .toList())),
+                          child: BlocBuilder<FoodCubit,FoodState>(builder: (_,state){
+                            BlocProvider.of<FoodCubit>(context).getFoods();
+                            if (state is FoodLoadSucces){
+                              return ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: foodsListData
+                                      .map((e) => Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0),
+                                    child: GestureDetector(
+                                      onTap: (){Get.to(DetailFoodPageMain(foods: e,));},
+                                      child: FoodCard(
+                                        title: e.nameFoods,
+                                        price: e.price,
+                                        discount: e.discount,
+                                        imagePath: e.pictureList,
+                                        weight: e.weight,
+                                      ),
+                                    ),
+                                  ))
+                                      .toList());
+                            }
+                            else{return Center(child:SpinKitChasingDots(color: "FFB61E".toColor(),));}
+                          },)),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
@@ -249,25 +255,32 @@ class HomePageMainState extends State<HomePageMain> {
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 12, bottom: 12),
-                      child: SizedBox(
+                      child: Container(
                           height: 200,
-                          child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: shopListData
-                                  .map((e) => Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 16.0),
-                                        child: ShopCard(
-                                          nameShop: e.nameShop,
-                                          imagePath1: e.foods[0].pictureList,
-                                          imagePath2: e.foods[1].pictureList,
-                                          imagePath3: e.foods[2].pictureList,
-                                          distance: e.distance,
-                                          lengthProduct: e.foods.length,
-                                          locationShop: e.locationShop,
-                                        ),
-                                      ))
-                                  .toList())),
+                          child: BlocBuilder<ShopCubit,ShopState>(builder: (_,state){
+                            BlocProvider.of<ShopCubit>(context).getShop();
+                            if(state is ShopLoadSucces){
+                              return ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: shopListData
+                                      .map((e) => Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16.0),
+                                    child: ShopCard(
+                                      nameShop: e.nameShop,
+                                      imagePath1: e.foods[0].pictureList,
+                                      imagePath2: e.foods[1].pictureList,
+                                      imagePath3: e.foods[2].pictureList,
+                                      distance: e.distance,
+                                      lengthProduct: e.foods.length,
+                                      locationShop: e.locationShop,
+                                      onPressed: (){Get.to(DetailShopPageMain(shop: e,));},
+                                    ),
+                                  ))
+                                      .toList());
+                            }
+                            else{return Center(child:SpinKitChasingDots(color: "FFB61E".toColor(),));}
+                          },)),
                     ),
                   ],
                 ),
