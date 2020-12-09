@@ -14,7 +14,7 @@ class FoodCart extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.of(context).size.width*0.8,
       height: MediaQuery.of(context).size.height * 0.25,
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       child: Row(
@@ -77,20 +77,16 @@ class FoodCart extends StatelessWidget{
             ),
           ),
           Container(
-
-
+            width: 30,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
                       onTap: deleteCart,
-                      child: CircleAvatar(
-                        child: Icon(
-                          Icons.delete,
-                          size: 18,
-                          color: Colors.black,
-                        ),
-                        backgroundColor: "FFB61E".toColor(),
+                      child: Icon(
+                        Icons.delete,
+                        size: 20,
+                        color: Colors.red,
                       ))
                 ],
               ))
