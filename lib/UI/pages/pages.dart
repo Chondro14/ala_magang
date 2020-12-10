@@ -29,3 +29,4 @@ part 'DetailCategoriesPageMain.dart';
 part 'DetailMenuFoodPageMain.dart';
 part 'DetailShopPageMain.dart';
 part 'CartPageMain.dart';
+part 'CartOverlayPageMain.dart';
